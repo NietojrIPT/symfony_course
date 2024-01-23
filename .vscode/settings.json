@@ -1,5 +1,6 @@
 {
     "conventionalCommits.scopes": [
-        "project_start"
+        "project_start",
+        "migrations"
     ]
 }
