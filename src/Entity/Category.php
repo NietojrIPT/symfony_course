@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\NameRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: NameRepository::class)]
+#[ORM\Entity(repositoryClass: CategoryRepository::class)]
 class Category
 {
     #[ORM\Id]
@@ -88,4 +88,10 @@ class Category
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return (string) $this->getName();
+    }
+    
 }
