@@ -30,11 +30,11 @@ class Post
     private ?Category $category = null;
 
     #[ORM\OneToMany(mappedBy: 'post', targetEntity: Comment::class, orphanRemoval: true)]
-    private Collection $coments;
+    private Collection $comments;
 
     public function __construct()
     {
-        $this->coments = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -93,27 +93,27 @@ class Post
     /**
      * @return Collection<int, Comment>
      */
-    public function getComents(): Collection
+    public function getComments(): Collection
     {
-        return $this->coments;
+        return $this->comments;
     }
 
-    public function addComent(Comment $coment): static
+    public function addComment(Comment $comment): static
     {
-        if (!$this->coments->contains($coment)) {
-            $this->coments->add($coment);
-            $coment->setPost($this);
+        if (!$this->comments->contains($comment)) {
+            $this->comments->add($comment);
+            $comment->setPost($this);
         }
 
         return $this;
     }
 
-    public function removeComent(Comment $coment): static
+    public function removeComment(Comment $comment): static
     {
-        if ($this->coments->removeElement($coment)) {
+        if ($this->comments->removeElement($comment)) {
             // set the owning side to null (unless already changed)
-            if ($coment->getPost() === $this) {
-                $coment->setPost(null);
+            if ($comment->getPost() === $this) {
+                $comment->setPost(null);
             }
         }
 
